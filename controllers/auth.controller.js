@@ -117,30 +117,9 @@ exports.login = async (req, res) => {
   
 };
 
-// exports.confirm = async (req, res) => {
-//   User.findOne({ confirmationCode: req.params.confirmationCode })
-//     .then((user) => {
-//       if (!user) {
-//         return res.status(404).send({ message: "L'utilisateur n'existe pas" });
-//       } else {
-//         user.status = "active";
-//         user.save((err) => {
-//           if (err) {
-//             res.status(500).send({ message: err });
-//             return;
-//           }
-//         });
-//         return res.json(user);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
+// exports.logout = function (req, res) {
+//   res.writeHead(200, {
+//     "Set-Cookie": `token=; HttpOnly; path=/; max-age=0`,
+//   });
+//   res.end();
 // };
-
-exports.logout = function (req, res) {
-  res.writeHead(200, {
-    "Set-Cookie": `token=; HttpOnly; path=/; max-age=0`,
-  });
-  res.end();
-};

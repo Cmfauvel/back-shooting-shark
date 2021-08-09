@@ -1,9 +1,22 @@
 /** @format */
 
-const { Citation } = require("../models");
+const { Citation, Sequelize } = require("../models");
+const Op = Sequelize.Op;
 
 exports.findAll = (req, res) => {
   Citation.findAll()
+    .then((citations) => {
+      res.send(citations);
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+};
+
+exports.findAllByUser = (req, res) => {
+  Citation.findAll({ where: { UserId: req.params.userId}})
     .then((citations) => {
       res.send(citations);
     })
@@ -41,6 +54,26 @@ exports.create = (req, res) => {
     }
   });
 };
+
+exports.findRandom = async (req, res) => {
+  let count;
+  await Citation.count().then((resp) => {
+    console.log(resp)
+    count = resp
+  });
+  console.log(count)
+  let nbRandom = await Math.floor(Math.random() * ((count +1) - 1) + 1);
+  console.log(nbRandom)
+  Citation.findOne({ where: { id: nbRandom}}).then((citation) => {
+    console.log(nbRandom)
+    res.send(citation);
+  })
+  .catch((err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
 
 exports.update = (req, res) => {
   Citation.update({
