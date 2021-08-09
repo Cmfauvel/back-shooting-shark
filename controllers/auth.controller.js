@@ -116,10 +116,3 @@ exports.login = async (req, res) => {
 
   
 };
-
-// exports.logout = function (req, res) {
-//   res.writeHead(200, {
-//     "Set-Cookie": `token=; HttpOnly; path=/; max-age=0`,
-//   });
-//   res.end();
-// };
