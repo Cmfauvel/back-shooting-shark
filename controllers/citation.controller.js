@@ -3,6 +3,10 @@
 const { Citation, Sequelize } = require("../models");
 const Op = Sequelize.Op;
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 exports.findAll = (req, res) => {
   Citation.findAll()
     .then((citations) => {
@@ -67,6 +71,21 @@ exports.findRandom = async (req, res) => {
   Citation.findOne({ where: { id: nbRandom}}).then((citation) => {
     console.log(nbRandom)
     res.send(citation);
+  })
+  .catch((err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
+exports.findARandom = async (req, res) => {
+  let count;
+  await Citation.count().then((resp) => {
+    count = resp
+  });
+  Citation.findAll().then((citation) => {
+    res.send(citation[getRandomInt(count)]);
   })
   .catch((err) => {
     if (err) {
