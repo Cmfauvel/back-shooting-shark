@@ -17,7 +17,7 @@
     "username": "root",
     "password": null,
     "database": "fil-rouge",
-    "host": "127.0.0.1",
+    "host": "https://shooting-words.herokuapp.com",
     "dialect": "mysql"
   }
 }
