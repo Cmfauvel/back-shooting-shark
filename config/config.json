@@ -19,12 +19,6 @@
     "database": "fil-rouge",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  },
-  // "production": {
-  //   "username": "id17396249_admin",
-  //   "password": "EH}Dg2VIv~_#uRO^",
-  //   "database": "id17396249_fil_rouge",
-  //   "host": "https://databases.000webhost.com/index.php",
-  //   "dialect": "mysql"
-  // }
+  }
 }
+ 
