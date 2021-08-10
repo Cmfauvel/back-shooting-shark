@@ -39,4 +39,4 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/citation/random/1
+GET http://localhost:3000/api/citations/1

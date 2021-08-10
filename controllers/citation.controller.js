@@ -59,26 +59,6 @@ exports.create = (req, res) => {
   });
 };
 
-exports.findRandom = async (req, res) => {
-  let count;
-  await Citation.count().then((resp) => {
-    console.log(resp)
-    count = resp
-  });
-  console.log(count)
-  let nbRandom = await Math.floor(Math.random() * ((count +1) - 1) + 1);
-  console.log(nbRandom)
-  Citation.findOne({ where: { id: nbRandom}}).then((citation) => {
-    console.log(nbRandom)
-    res.send(citation);
-  })
-  .catch((err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-}
-
 exports.findARandom = async (req, res) => {
   let count;
   await Citation.count().then((resp) => {
@@ -108,6 +88,11 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Citation.destroy({ where: { id: req.params.id } });
-  res.send("delete");
+  Citation.destroy({ where: { id: req.params.id } }).then((resp) => {
+    res.send({message: "Citation supprimée."})}).catch((err) => {
+      if (err) {
+        console.log(err);
+        res.send({message: "La suppression a échoué."})
+      }
+    })
 };

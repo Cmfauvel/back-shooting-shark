@@ -13,11 +13,9 @@ router.get("/citation/:id", citation.findOne);
 
 router.get("/citation", citation.findAll);
 
-router.get("/citation/:userId", citation.findAllByUser);
+router.get("/citations/:userId", citation.findAllByUser);
 
 router.delete("/citation/:id", citation.delete);
-
-router.get("/citation/random/:userId", citation.findRandom);
 
 router.get("/random", citation.findARandom);
 

@@ -41,20 +41,6 @@ exports.register = async (req, res) => {
     });
 };
 
-exports.checkAuthentication = async (req, res) => {
-  const token = req.params.token;
-  console.log(token)
-  const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-console.log(decodedToken)
-  const currentUser = await User.findOne({
-    where: { mail: decodedToken.mail }, include: ["citations"]
-  }).catch((err) => {
-    console.log("Error : ", err);
-  });
-
-  return res.json(currentUser);
-};
-
 exports.login = async (req, res) => {
   const mail = req.body.mail;
   const password = req.body.password;
