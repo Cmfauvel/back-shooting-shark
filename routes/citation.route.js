@@ -19,5 +19,7 @@ router.delete("/citation/:id", citation.delete);
 
 router.get("/citation/random/:userId", citation.findRandom);
 
+router.get("/random", citation.findARandom);
+
 
 module.exports = router;
