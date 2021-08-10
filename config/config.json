@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "fil-rouge",
-    "host": "127.0.0.1",
+    "username": "dbu741174",
+    "password": "Simplondccf.12",
+    "database": "dbs3423998",
+    "host": "db5004146741.hosting-data.io:3306",
     "dialect": "mysql"
   }
 }
