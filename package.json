@@ -8,6 +8,10 @@
     "dev": "nodemon app.js",
     "start": "nodemon app.js"
   },
+  "engines": {
+    "node": "^14.16.0",
+    "npm": "start"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Cmfauvel/back-shooting-shark.git"
