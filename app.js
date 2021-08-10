@@ -12,7 +12,7 @@ const api = require("./routes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./generateurCitations"));
+app.use(express.static("generateurCitations"));
 
 app.use(
   cors({
