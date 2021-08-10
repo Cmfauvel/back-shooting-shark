@@ -21,12 +21,12 @@ app.use(
     // methods: "GET, POST"
   })
 );
-
+let port = process.env.PORT || 3000;
 app.use("/api", api);
 
 //.sync({ force: true })
 db.sequelize.sync().then((req) => {
-  app.listen(3000, () => {
+  app.listen(port, () => {
     console.log("server running");
   });
 });
