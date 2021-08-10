@@ -47,7 +47,7 @@ exports.checkAuthentication = async (req, res) => {
   const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 console.log(decodedToken)
   const currentUser = await User.findOne({
-    where: { mail: decodedToken.mail },
+    where: { mail: decodedToken.mail }, include: ["citations"]
   }).catch((err) => {
     console.log("Error : ", err);
   });
@@ -71,19 +71,18 @@ exports.login = async (req, res) => {
   const userWithEmail = await User.findOne({ where: { mail: req.body.mail } }).catch((err) => {
     console.log("Error: ", err);
   });
-  // let compare = await bcrypt.compare(hashedPassword, userWithEmail.password);
-  // console.log(compare)
+  let compare = await bcrypt.compare(password, userWithEmail.password);
+  console.log(compare)
   if (!userWithEmail){
     return res.json({
       message: "Adresse mail ou mot de passe erroné.",
     });
-  } else {
-  // } else if (compare == false) {
-  //   return res.json({
-  //     message: "Mot de passe erroné.",
-  //   });
+  } else if (compare == false) {
+    return res.json({
+      message: "Adresse mail ou mot de passe erroné.",
+    });
 
-  // }  else if(compare == true) {
+  }  else if(compare == true) {
     const accessToken = jwt.sign(
       {
         id: userWithEmail.id,

@@ -21,7 +21,7 @@ app.use(
     // methods: "GET, POST"
   })
 );
-let port = process.env.PORT || 3000;
+let port = 3000;
 app.use("/api", api);
 
 //.sync({ force: true })
